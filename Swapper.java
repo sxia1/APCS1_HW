@@ -3,6 +3,9 @@
 //HW38 -- Put it Together
 //2017-11-21
 
+/* First prints out the array. Then prompts the user for inputs 4 times. It should be the row and column for the first String, then the row and column for the second string. After that the two Strings will swap places and the array will be printed out again.
+ */
+
 import cs1.Keyboard;
 
 public class Swapper{
@@ -44,7 +47,7 @@ public class Swapper{
     
     //MAIN METHOD
     public static void main(String [] args){
-
+	
 	//Create an Array
 	//I believe this is correct since every String is unique
 	//I don't understand the 3-4 char limitation though
@@ -84,5 +87,7 @@ public class Swapper{
 	
 	//Print array
 	print1(array);
+
+	//perhaps I can create a while loop that allows the user to choose whether or not to continue swapping?
     }
 }
