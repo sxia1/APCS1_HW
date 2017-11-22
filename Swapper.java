@@ -69,6 +69,8 @@ public class Swapper{
 	//more complicated to code
 
 	System.out.println("Note that you start counting rows and columns at 0 instead of 1");
+
+	//Change to one input prompt
 	
 	System.out.println("Input row of first String to swap");
 	a = Keyboard.readInt();
@@ -88,6 +90,6 @@ public class Swapper{
 	//Print array
 	print1(array);
 
-	//perhaps I can create a while loop that allows the user to choose whether or not to continue swapping?
+	//Create a while loop that allows the user to choose whether or not to continue swapping?
     }
 }
