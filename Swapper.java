@@ -68,12 +68,17 @@ public class Swapper{
 	//more complicated to code
 
 	System.out.println("Note that you start counting rows and columns at 0 instead of 1");
+<<<<<<< HEAD
 	System.out.println("Please input the location of the strings based on row and then column.\nExample: 0,1-2,3");
 	String input = Keyboard.readString();
 	row1 = Integer.parseInt(input.substring(0,1));
 	col1 = Integer.parseInt(input.substring(2,3));
 	row2 = Integer.parseInt(input.substring(4,5));
 	col2 = Integer.parseInt(input.substring(6,7));
+=======
+
+	//Change to one input prompt
+>>>>>>> 0bb0b337c08d5895eba6aa423c41f0428d2066a1
 	
 	//Swap
 	swap(array);
@@ -100,6 +105,7 @@ public class Swapper{
 	System.out.println("\n\t0\t1\t2");
 	print1(array);
 
+<<<<<<< HEAD
 	//Continue:
 	System.out.println("Continue Swapping? \n1 Yes \t 2 No");
 
@@ -128,5 +134,8 @@ public class Swapper{
 	}
 	System.out.println("Exiting...");
 	
+=======
+	//Create a while loop that allows the user to choose whether or not to continue swapping?
+>>>>>>> 0bb0b337c08d5895eba6aa423c41f0428d2066a1
     }
 }
