@@ -18,7 +18,9 @@
  * ListInt interface. (ListInt.java must be in same dir as this file)
  ***************************/
 
-public abstract class SuperArray implements ListInt
+//Question: What is the purpose of the interface?
+
+public class SuperArray implements ListInt
 {
 
     private int[] _data;  //underlying container
@@ -76,13 +78,16 @@ public abstract class SuperArray implements ListInt
 
 
     //adds an item after the last item
-    public void add( int newVal )
+    public boolean add( int newVal )
     {
 	add( _size, newVal );
+	return(_data[_size -1] == newVal);
     }
 
 
     //inserts an item at index
+    //Should I edit this to return what is being added
+    //just like how remove returns the element being removed?
     public void add( int index, int newVal )
     {
 	//first expand if necessary
@@ -98,12 +103,14 @@ public abstract class SuperArray implements ListInt
 
     //removes the item at index
     //shifts elements left to fill in newly-empted slot
-    public void remove( int index )
+    public int remove( int index )
     {
+	int temp = _data[index];
 	for( int i = index; i < _size - 1; i++ ) {
 	    _data[i] = _data[i+1];
 	}
 	_size--;
+	return temp;
     }
 
 
@@ -114,41 +121,46 @@ public abstract class SuperArray implements ListInt
     }
 
 
-
     //main method for testing
     public static void main( String[] args )
     {
-	/*~~~~~~~~move~me~down~~~~~~~~~~~~~~V~~~~~~~~
 	  ListInt mayfield = new SuperArray();
 	  System.out.println("Printing empty SuperArray mayfield...");
-	  System.out.println(mayfield);
+	  System.out.println(mayfield); // []
 
-	  mayfield.add(5);
-	  mayfield.add(4);
-	  mayfield.add(3);
-	  mayfield.add(2);
-	  mayfield.add(1);
+	  //Testing add
+	  System.out.println( "Successful add: " + mayfield.add(5) ); //true
+	  System.out.println( "Successful add: " + mayfield.add(4) ); //true
+	  System.out.println( "Successful add: " + mayfield.add(3) ); //true
+	  System.out.println( "Successful add: " + mayfield.add(2) ); //true
+	  System.out.println( "Successful add: " + mayfield.add(1) ); //true
 
-	  System.out.println("Printing populated SuperArray mayfield...");
-	  System.out.println(mayfield);
+	  System.out.println("\nPrinting populated SuperArray mayfield...");
+	  System.out.println(mayfield); // [5,4,3,2,1]
 
-	  mayfield.remove(3);
+	  //Testing remove
+	  System.out.println( "\nremoving " + mayfield.remove(3) + " ...");
 	  System.out.println("Printing SuperArray mayfield post-remove...");
-	  System.out.println(mayfield);
-	  mayfield.remove(3);
+	  System.out.println(mayfield); // [5,4,3,1]
+	  
+	  System.out.println( "\nremoving " + mayfield.remove(3) + " ...");
 	  System.out.println("Printing SuperArray mayfield post-remove...");
-	  System.out.println(mayfield);
+	  System.out.println(mayfield); // [5,4,3]
 
+	  //Testing add at index
+	  System.out.println();
 	  mayfield.add(3,99);
 	  System.out.println("Printing SuperArray mayfield post-insert...");
-	  System.out.println(mayfield);
+	  System.out.println(mayfield); // [5,4,3,99]
+
 	  mayfield.add(2,88);
 	  System.out.println("Printing SuperArray mayfield post-insert...");
-	  System.out.println(mayfield);
+	  System.out.println(mayfield); // [5,4,88,3,99]
+
 	  mayfield.add(1,77);
 	  System.out.println("Printing SuperArray mayfield post-insert...");
-	  System.out.println(mayfield);
-	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~~~~~~~~*/
+	  System.out.println(mayfield); // [5,77,4,88,3,99]
+
     }//end main()
 
 
