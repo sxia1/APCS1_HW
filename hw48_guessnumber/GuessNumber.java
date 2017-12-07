@@ -12,6 +12,7 @@ public class GuessNumber{
     //when you run this program, it will keep num at a specific value
     //when I ran the first, second and third time, the correct guess was 22
     //that's how I knew something was off...
+    
     private static int num = 0;
     private static int guess;
     private static int Ctr = 0;
@@ -26,6 +27,7 @@ public class GuessNumber{
     }
     
     //Guessing...
+    //Recursively
     public static void guess(){
 	System.out.print("\nGuess a number from " + lowb + "-" + upb + ": ");
 	guess = Keyboard.readInt();
@@ -47,7 +49,7 @@ public class GuessNumber{
 	    newRound();
 	}
     }
-
+    
     //newRound?
     public static void newRound(){
 	System.out.print("\nBegin new round of guessing? 1. Yes 2. No : ");
