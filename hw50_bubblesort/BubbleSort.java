@@ -44,19 +44,26 @@ public class BubbleSort {
     // postcondition: data's elements sorted in ascending order
     public static void bubbleSortV( ArrayList<Comparable> data ){
 	int Ctr = 0;
+	//bubble sort algo always gets job done after size()-1 number of passes
+	//no need to write and call a method to see if the array is sorted
 	while(Ctr < data.size()-1){
 	    Ctr ++;
+	    //for loop evals from right to left
 	    for(int i = data.size()-1;
 		i >=  1;
 		i --){
+		//compares the element to the one at its left
+		//if it is smaller than the one at its left...
 		if (data.get(i).compareTo(data.get(i-1)) < 0){
+		    //they swap places :D
+		    //must declare temp as Comparable!!!
 		    Comparable temp = data.get(i);
 		    data.set(i, data.get(i -1));
 		    data.set(i-1, temp);
 		}
 	    }//end for loop
 	}//end while loop
-    }
+    }//end bubbleSortV
 
 
     // ArrayList-returning bubbleSort
@@ -64,6 +71,7 @@ public class BubbleSort {
     //                Returns sorted copy of input ArrayList.
     public static ArrayList<Comparable> bubbleSort( ArrayList<Comparable> input )
     {
+	//didn't feel like copying and pasting code so I just called bubbleSortV
 	bubbleSortV(input);
 	return input;
     }
