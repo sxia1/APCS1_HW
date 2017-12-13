@@ -1,3 +1,8 @@
+//Sophia Xia
+//APCS1 pd1
+//HW52 -- Poker Face
+//2017-12-12
+
 /***************************************
  *  class InsertionSort -- implements InsertionSort algorithm
  ***************************************/
@@ -6,95 +11,117 @@ import java.util.ArrayList;
 
 public class InsertionSort
 {
-  //~~~~~~~~~~~~~~~~~~~ HELPER METHODS ~~~~~~~~~~~~~~~~~~~
-  //precond: lo < hi && size > 0
-  //postcond: returns an ArrayList of random integers
-  //          from lo to hi, inclusive
-  public static ArrayList populate( int size, int lo, int hi ) {
-    ArrayList<Integer> retAL = new ArrayList<Integer>();
-    while( size > 0 ) {
+    //~~~~~~~~~~~~~~~~~~~ HELPER METHODS ~~~~~~~~~~~~~~~~~~~
+    //precond: lo < hi && size > 0
+    //postcond: returns an ArrayList of random integers
+    //          from lo to hi, inclusive
+    public static ArrayList populate( int size, int lo, int hi ) {
+	ArrayList<Integer> retAL = new ArrayList<Integer>();
+	while( size > 0 ) {
 	    //     offset + rand int on interval [lo,hi]
 	    retAL.add( lo + (int)( (hi-lo+1) * Math.random() ) );
 	    size--;
+	}
+	return retAL;
     }
-    return retAL;
-  }
 
-  //randomly rearrange elements of an ArrayList
-  public static void shuffle( ArrayList al ) {
-    int randomIndex;
-    for( int i = al.size()-1; i > 0; i-- ) {
+    //randomly rearrange elements of an ArrayList
+    public static void shuffle( ArrayList al ) {
+	int randomIndex;
+	for( int i = al.size()-1; i > 0; i-- ) {
 	    //pick an index at random
-      randomIndex = (int)( (i+1) * Math.random() );
+	    randomIndex = (int)( (i+1) * Math.random() );
 	    //swap the values at position i and randomIndex
-      al.set( i, al.set( randomIndex, al.get(i) ) );
+	    al.set( i, al.set( randomIndex, al.get(i) ) );
+	}
     }
-  }
-  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-  // VOID version of InsertionSort
-  // Rearranges elements of input ArrayList
-  // postcondition: data's elements sorted in ascending order
-  public static void insertionSortV( ArrayList<Comparable> data )
-  {
-    /* YOUR IMPLEMENTATION HERE */
-  }//end insertionSortV
+    // VOID version of InsertionSort
+    // Rearranges elements of input ArrayList
+    // postcondition: data's elements sorted in ascending order
+    public static void insertionSortV( ArrayList<Comparable> data )
+    {
+	//Ctr keeps track of the index
+	int Ctr = 1;
+	while (Ctr < data.size()){
+	    //for loop: should go through everything to the left of the index
+	    for(int i = Ctr -1;
+		i >= 0;
+		i --){
+		//should compare the value to the index specified by loop
+		if (data.get(i+1).compareTo(data.get(i)) < 0){
+		    data.set(i+1, (data.set(i, data.get(i+1))));
+		    //swap value of index i with value of Ctr -1 index
+		}
+	    }
+	    //adds to counter and then goes back to while loop
+	    //if BE is true then moves onto for loop 
+	    Ctr ++;
+	}
+    }//end insertionSortV
 
 
-  // ArrayList-returning insertionSort
-  // postcondition: order of input ArrayList's elements unchanged
-  //                Returns sorted copy of input ArrayList.
-  public static ArrayList<Comparable>
-    insertionSort( ArrayList<Comparable> input )
-  {
-    /* YOUR IMPLEMENTATION HERE */
-  }//end insertionSort
+    // ArrayList-returning insertionSort
+    // postcondition: order of input ArrayList's elements unchanged
+    //                Returns sorted copy of input ArrayList.
+    public static ArrayList<Comparable>
+	insertionSort( ArrayList<Comparable> input ){
+
+	ArrayList<Comparable> data = new ArrayList<Comparable>();
+	//for every Comparable Object in input, add to ArrayList data
+	for(Comparable o: input)
+	    data.add(o);
+	insertionSortV(data);
+	return data;
+	
+    }//end insertionSort
 
 
-  public static void main( String [] args )
-  {
-    /*===============for VOID methods=============
-      System.out.println("\n*** Testing sort-in-place (void) version... *** ");
-      ArrayList glen = new ArrayList<Integer>();
-      glen.add(7);
-      glen.add(1);
-      glen.add(5);
-      glen.add(12);
-      glen.add(3);
-      System.out.println( "\nArrayList glen before sorting:\n" + glen );
-      insertionSortV(glen);
-      System.out.println( "\nArrayList glen after sorting:\n" + glen );
+    public static void main( String [] args )
+    {
+	/*===============for VOID methods=============
+	  System.out.println("\n*** Testing sort-in-place (void) version... *** ");
+	  ArrayList glen = new ArrayList<Integer>();
+	  glen.add(7);
+	  glen.add(1);
+	  glen.add(5);
+	  glen.add(12);
+	  glen.add(3);
+	  System.out.println( "\nArrayList glen before sorting:\n" + glen );
+	  insertionSortV(glen);
+	  System.out.println( "\nArrayList glen after sorting:\n" + glen );
 
-      ArrayList coco = populate( 10, 1, 1000 );
-      System.out.println( "\nArrayList coco before sorting:\n" + coco );
-      insertionSortV(coco);
-      System.out.println( "\nArrayList coco after sorting:\n" + coco );
-      ============================================*/
+	  ArrayList coco = populate( 10, 1, 1000 );
+	  System.out.println( "\nArrayList coco before sorting:\n" + coco );
+	  insertionSortV(coco);
+	  System.out.println( "\nArrayList coco after sorting:\n" + coco );
+	  ============================================*/
 
-    /*==========for AL-returning methods==========
-      System.out.println( "*** Testing non-void version... *** " );
-    	ArrayList glen = new ArrayList<Integer>();
-      glen.add(7);
-      glen.add(1);
-      glen.add(5);
-      glen.add(12);
-      glen.add(3);
-      System.out.println( "\nArrayList glen before sorting:\n" + glen );
-      ArrayList glenSorted = insertionSort( glen );
-      System.out.println( "\nsorted version of ArrayList glen:\n" 
-      + glenSorted );
-      System.out.println( "\nArrayList glen after sorting:\n" + glen );
+	  System.out.println( "*** Testing non-void version... *** " );
+	  ArrayList glen = new ArrayList<Integer>();
+	  glen.add(7);
+	  glen.add(1);
+	  glen.add(5);
+	  glen.add(12);
+	  glen.add(3);
+	  System.out.println( "\nArrayList glen before sorting:\n" + glen );
+	  ArrayList glenSorted = insertionSort( glen );
+	  System.out.println( "\nsorted version of ArrayList glen:\n" 
+	  + glenSorted );
+	  System.out.println( "\nArrayList glen after sorting:\n" + glen );
 
-      ArrayList coco = populate( 10, 1, 1000 );
-      System.out.println( "\nArrayList coco before sorting:\n" + coco );
-      ArrayList cocoSorted = insertionSort( coco );
-      System.out.println( "\nsorted version of ArrayList coco:\n" 
-      + cocoSorted );
-      System.out.println( "\nArrayList coco after sorting:\n" + coco );
-      System.out.println( coco );
-      ============================================*/
+	  ArrayList coco = populate( 10, 1, 1000 );
+	  System.out.println( "\nArrayList coco before sorting:\n" + coco );
+	  ArrayList cocoSorted = insertionSort( coco );
+	  System.out.println( "\nsorted version of ArrayList coco:\n" 
+	  + cocoSorted );
+	  System.out.println( "\nArrayList coco after sorting:\n" + coco );
+	  System.out.println( coco );
+	/*==========for AL-returning methods==========
+	  ============================================*/
 
-  }//end main
+    }//end main
 
 }//end class InsertionSort
