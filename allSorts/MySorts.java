@@ -31,7 +31,7 @@ public class MySorts {
 	 (even if SelectionSort was totally ordered, it would be the same number of passes)
 	 why?
 	 because we still need to compare the "reigning champ" to every other number, and thus the same number of comparisons must be performed.
-    HOWEVER, in some cases, fewer swaps may be needed.***/
+	 HOWEVER, in some cases, fewer swaps may be needed.***/
 
     // VOID version of SelectionSort
     // Rearranges elements of input ArrayList
