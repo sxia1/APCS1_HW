@@ -1,10 +1,13 @@
 //Team Grapefruit
 //Roster: James Huang, Sophia Xia
 //APCS1 pd1
-//HW54 -- One File to Bring Them All...
-//2017-12-13
+//HW55 -- Never Fear, Big Oh Is Here!
+//2017-12-14
+
 import java.util.ArrayList;
 public class MySorts {
+
+
     //array constructors
     public static ArrayList populate( int size, int lo, int hi ) {
 	ArrayList<Integer> retAL = new ArrayList<Integer>();
@@ -26,12 +29,22 @@ public class MySorts {
 	    al.set( i, al.set( randomIndex, al.get(i) ) );
 	}
     }
+
+
+    
     //~~~~~~~~~~~~~~~~~~~~~~Selection Sort~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    /*** there is no best or worst case scenario, each number is still being compared to the other numbers no matter what!
-	 (even if SelectionSort was totally ordered, it would be the same number of passes)
-	 why?
-	 because we still need to compare the "reigning champ" to every other number, and thus the same number of comparisons must be performed.
-	 HOWEVER, in some cases, fewer swaps may be needed.***/
+    /*****
+	  there is no best or worst case scenario,
+	  each number is still being compared to the other numbers no matter what!
+	  (even if SelectionSort was totally ordered, it would be the same number of passes)
+	  why?
+	  because we still need to compare the "reigning champ" to every other number,
+	  and thus the same number of comparisons must be performed.
+	  HOWEVER, in some cases, fewer swaps may be needed.
+	  SelectionSort is on the order of n.
+	  SelectionSort will always do n-1 number of passes meaning the order should be linear
+	  because the highest degree of the equation is 1.
+    *****/
 
     // VOID version of SelectionSort
     // Rearranges elements of input ArrayList
@@ -39,21 +52,33 @@ public class MySorts {
     public static void selectionSortV( ArrayList<Comparable> data ) 
     {
 	System.out.println("this is the selction sort algorithm on"+ data);
-	int sort_mult=data.size();//tells us how many times we need to go through to sort the array
-	for(int p=0; p<sort_mult; p++) {//this is the pass counter(p stands for pass). p is also the element for which we will be finding the correct number for
+	//tells us how many times we need to go through to sort the array
+	int sort_mult=data.size();
+	//this is the pass counter(p stands for pass).
+	//p is also the element for which we will be finding the correct number for
+	for(int p=0; p<sort_mult; p++) {
 	    System.out.println("Commencing pass #"+(p+1)+"...");
-	    for(int i=sort_mult-1;i>=p;i--) {//int i is the last element in the list, and we will compare every number from the location of the last element to the location of p.
-		if (data.get(i).compareTo(data.get(p))<0){ //if i is smaller than the element currently at p
+	    //int i is the last element in the list
+	    //and we will compare every number from the location of the last element to the location of p.
+	    for(int i=sort_mult-1;i>=p;i--) {
+		//if i is smaller than the element currently at p
+		if (data.get(i).compareTo(data.get(p))<0){
 		    data.set(i,data.set(p,data.get(i)));//swap the elements
-		    //continue this until we reach the element immediately adjacent, and then we will have found the smallest element in the subset [p,i]
+		    //continue this until we reach the element immediately adjacent
+		    //and then we will have found the smallest element in the subset [p,i]
 		}
 	    }
 	}
     }//end selectionSortV
     
+
+
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Bubble Sort~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /*BEST CASE SCENARIO:the list is completely sorted(no passes need to sort)
       WORST CASE SCENARIO: list is in descending order(n-1 passes needed to sort) 
+      BubbleSort is in the order of n.
+      Since the worst case scenario is n-1 passes and n-1 has a highest degree of 1,
+      the order should be linear. n works because it will always be greater than n-1.
     */
     public static void bubbleSortV( ArrayList<Comparable> data )
     {
@@ -72,10 +97,14 @@ public class MySorts {
 	}
     }//end BubbleSort V
 
+    
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Insertion Sort~~~~~~~~~~~~~~~~~~~~
     /*BEST CASE SCENARIO: List already sorted
       WORST CASE SCENARIO: List is in descending order(most swaps required)
+      InsertionSort is in the order of n.
+      Regardless of worst or best case, this algorithm will always do n-1 passes.
+      Therefore the order is linear.
     */
     public static void insertionSortV( ArrayList<Comparable> data )
     {
